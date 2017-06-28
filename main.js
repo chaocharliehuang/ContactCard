@@ -5,7 +5,7 @@ $('form').submit(function(e) {
     var name = formData[0].value + " " + formData[1].value;
     var description = formData[2].value;
 
-    var btnHTML = "<button class='card btn btn-info btn-block' id='" + contactID + "' ";
+    var btnHTML = "<button class='card btn btn-success btn-block' id='" + contactID + "' ";
     btnHTML += "data-altP = '" + description + "'>";
     btnHTML += "<h2>" + name + "</h2>";
     btnHTML += "<p>Click for description!</p></button>";
@@ -21,4 +21,11 @@ $(document).on('click', '.card', function() {
     $(idP).remove();
     $(this).append('<p>' + $(this).attr('data-altP') +'</p>');
     $(this).attr('data-altP', currentP);
+    if ($(this).hasClass('btn-info')) {
+        $(this).removeClass('btn-info');
+        $(this).addClass('btn-success');
+    } else if ($(this).hasClass('btn-success')) {
+        $(this).removeClass('btn-success');
+        $(this).addClass('btn-info');
+    }
 });
